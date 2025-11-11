@@ -1,3 +1,4 @@
+using StarterAssets;
 using UnityEngine;
 
 namespace Code
@@ -6,6 +7,8 @@ namespace Code
     {
         [SerializeField] private Canvas _canvasSetting;
         [SerializeField] private bool _pauseOnOpen = true;
+        private FirstPersonController FirstPersonController;
+        private WeaponController _weaponController;
 
         private void Start()
         {
@@ -29,6 +32,8 @@ namespace Code
             if (_pauseOnOpen)
             {
                 Time.timeScale = isOpen ? 1f : 0f;
+                FirstPersonController.enabled = !isOpen;
+                _weaponController.IsActive = !isOpen;
             }
         }
     }
